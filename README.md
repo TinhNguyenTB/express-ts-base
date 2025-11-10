@@ -69,25 +69,12 @@ npm run lint
 npm run lint -- --fix
 ```
 
-## 🗂️ Cấu trúc thư mục
-
-src/
-├─ app.ts # Entry point
-├─ routes/ # API routes
-├─ controllers/ # Controllers
-├─ services/ # Business logic
-├─ dtos/ # DTO + validation
-├─ middlewares/ # Validation, exception, interceptor
-├─ interceptors/ # Response interceptor
-├─ utils/ # Logger, wrapAsync, helpers
-└─ exceptions/ # HttpException
-
 ## 🔹 Notes
 
-Middleware responseTransformInterceptor tự wrap res.json theo chuẩn { status, message, data }.
+- responseTransformInterceptor: tự wrap res.json theo chuẩn { status, message, data }.
 
-Middleware globalValidationMiddleware validate body/query/params DTO.
+- globalValidationMiddleware: validate body/query/params DTO.
 
-wrapAsync giúp async controller tự gửi lỗi vào global error handler.
+- wrapAsync: giúp async controller tự gửi lỗi vào global error handler.
 
-Dùng function-based service để tách logic nghiệp vụ khỏi controller.
+- Dùng function-based service để tách logic nghiệp vụ khỏi controller.
