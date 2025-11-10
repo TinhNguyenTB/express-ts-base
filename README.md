@@ -72,15 +72,15 @@ npm run lint -- --fix
 ## 🗂️ Cấu trúc thư mục
 
 src/
-app.ts # Entry point
-routes/ # API routes
-controllers/ # Controllers
-services/ # Business logic
-dtos/ # DTO + validation
-middlewares/ # Validation, exception, interceptor
-interceptors/ # Response interceptor
-utils/ # Logger, wrapAsync, helpers
-exceptions/ # HttpException
+├─ app.ts # Entry point
+├─ routes/ # API routes
+├─ controllers/ # Controllers
+├─ services/ # Business logic
+├─ dtos/ # DTO + validation
+├─ middlewares/ # Validation, exception, interceptor
+├─ interceptors/ # Response interceptor
+├─ utils/ # Logger, wrapAsync, helpers
+└─ exceptions/ # HttpException
 
 ## 🔹 Notes
 
