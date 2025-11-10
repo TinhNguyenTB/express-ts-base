@@ -6,13 +6,13 @@ export const responseTransformInterceptor = (req: Request, res: Response, next: 
   const originalJson = res.json.bind(res);
 
   // Ghi đè lại res.json
-  res.json = (body: any) => {
-    // Nếu body đã có statusCode (do ExceptionFilter gửi), không format lại
-    if (body && typeof body === "object" && "statusCode" in body) {
-      return originalJson(body);
+  res.json = (result: any) => {
+    // Nếu đã có statusCode (do ExceptionFilter gửi), không format lại
+    if (result && typeof result === "object" && "statusCode" in result) {
+      return originalJson(result);
     }
 
-    const formatted = responseInterceptor(body, res.locals.message || "Success");
+    const formatted = responseInterceptor(result, res.locals.message || "Success");
 
     return originalJson(formatted);
   };
