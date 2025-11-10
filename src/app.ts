@@ -5,8 +5,13 @@ import { logger } from "@/utils/logger";
 import { globalValidationMiddleware } from "@/middlewares/validation.middleware";
 import { exceptionFilter } from "@/middlewares/exception-filter.middleware";
 import { responseTransformInterceptor } from "@/middlewares/intercept.middleware";
+import cors from "cors";
+import { corsConfig } from "@/configs/cors.config";
 
 const app = express();
+
+// Cấu hình CORS
+app.use(cors(corsConfig));
 
 app.use(express.json());
 
@@ -15,6 +20,8 @@ app.use(responseTransformInterceptor);
 
 // Validate toàn bộ body/query/params có DTO)
 app.use(globalValidationMiddleware());
+
+//Routes
 app.use("/api", router);
 
 // Global error handler — Đặt ở cuối cùng
