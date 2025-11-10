@@ -1,6 +1,7 @@
 import { plainToInstance } from "class-transformer";
 import { validate } from "class-validator";
 import { Request, Response, NextFunction } from "express";
+import { StatusCodes } from "http-status-codes";
 
 export function ValidationPipe(dtoClass: any, source: "body" | "query" | "params" = "body") {
   return async (req: Request, res: Response, next: NextFunction) => {
@@ -14,8 +15,8 @@ export function ValidationPipe(dtoClass: any, source: "body" | "query" | "params
         (err) => `${err.property}: ${Object.values(err.constraints || {}).join(", ")}`
       );
 
-      return res.status(400).json({
-        statusCode: 400,
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        statusCode: StatusCodes.BAD_REQUEST,
         message: "Validation failed",
         errors: messages,
       });

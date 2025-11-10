@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { HttpException } from "@/exceptions/http-exception";
+import { getReasonPhrase, StatusCodes } from "http-status-codes";
 
 export const exceptionFilter = (err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error("❌ Error:", err);
@@ -13,8 +14,8 @@ export const exceptionFilter = (err: Error, req: Request, res: Response, next: N
   }
 
   // Fallback cho lỗi không xác định
-  return res.status(500).json({
-    statusCode: 500,
-    message: "Internal server error",
+  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+    message: getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR),
   });
 };

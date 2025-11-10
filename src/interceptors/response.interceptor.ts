@@ -1,3 +1,5 @@
+import { getReasonPhrase, StatusCodes } from "http-status-codes";
+
 export interface ResponseFormat<T> {
   statusCode: number;
   message: string;
@@ -6,8 +8,8 @@ export interface ResponseFormat<T> {
 
 export const responseInterceptor = <T>(
   data: T,
-  message = "Success",
-  statusCode = 200
+  message = getReasonPhrase(StatusCodes.OK),
+  statusCode = StatusCodes.OK
 ): ResponseFormat<T> => {
   return {
     statusCode,

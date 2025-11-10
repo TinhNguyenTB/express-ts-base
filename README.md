@@ -43,6 +43,7 @@ yarn install
 PORT=3000
 DATABASE_URL=
 JWT_SECRET=
+CLIENT_URL=
 ```
 
 ## 🚀 Chạy project
@@ -73,7 +74,7 @@ npm run lint -- --fix
 
 - responseTransformInterceptor: tự wrap res.json theo chuẩn { status, message, data }.
 
-- globalValidationMiddleware: validate body/query/params DTO.
+- ValidationPipe: validate body/query/params DTO.
 
 - wrapAsync: giúp async controller tự gửi lỗi vào global error handler.
 

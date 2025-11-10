@@ -1,5 +1,6 @@
 import { HttpException } from "@/exceptions/http-exception";
 import { CreateUserDto } from "@/dtos/create-user.dto";
+import { StatusCodes } from "http-status-codes";
 
 interface User {
   id: number;
@@ -17,7 +18,7 @@ export const getUser = (): User => {
 // Tạo user
 export const createUser = (dto: CreateUserDto): User => {
   if (dto.name === "error") {
-    throw new HttpException(409, "User already exists");
+    throw new HttpException(StatusCodes.CONFLICT, "User already exists");
   }
 
   const newUser: User = {
